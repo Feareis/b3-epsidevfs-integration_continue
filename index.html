@@ -40,7 +40,7 @@
                 const data = await response.json();
 
                 if (data.result === "success") {
-                    const convertedAmount = amount * data.conversion_rate;
+                    const convertedAmount = parseFloat((amount * data.conversion_rate).toFixed(2));
                     document.getElementById('result').innerText = `Montant converti : ${convertedAmount} ${targetCurrency}`;
                 } else {
                     document.getElementById('result').innerText = 'Erreur lors de la conversion. Vérifiez les devises.';
