@@ -47,7 +47,7 @@
 
 <br/>
 
-# - Concepts Clés-
+# - Concepts Clés -
 
 ## - Pourquoi Docker ?
 
