@@ -19,7 +19,7 @@ def convert_currency(amount, source_currency, target_currency):
         response = requests.get(url)
         response.raise_for_status()  # Check for a successful response
         rate = response.json().get("rates", {}).get(target_currency)
-        return amount * rate if rate else None
+        return round(amount * rate, 2) if rate else None
     except requests.RequestException as e:
         print(f"Error retrieving exchange rates: {e}")
         return None
