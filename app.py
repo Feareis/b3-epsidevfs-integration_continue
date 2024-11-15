@@ -19,7 +19,7 @@ def convert_currency(amount, source_currency, target_currency):
         response = requests.get(url)
         response.raise_for_status()  # Check for a successful response
         rate = response.json().get("rates", {}).get(target_currency)
-        return round(amount * rate, 2) if rate else None
+        return amount * rate if rate else None
     except requests.RequestException as e:
         print(f"Error retrieving exchange rates: {e}")
         return None
@@ -41,7 +41,7 @@ def convert():
     if not all([amount, source_currency, target_currency]):
         return jsonify({"error": "Amount, source currency, and target currency are required"}), 400
 
-    result = round(convert_currency(amount, source_currency, target_currency), 2)
+    result = convert_currency(amount, source_currency, target_currency)
 
     if result is None:
         return jsonify({"error": "Conversion failed. Check the currencies and try again."}), 400
