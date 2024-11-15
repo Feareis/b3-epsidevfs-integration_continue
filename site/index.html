@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur de Devises</title>
+</head>
+<body>
+    <h1>Convertisseur de devises</h1>
+
+    <form id="converterForm">
+        <label for="amount">Montant :</label>
+        <input type="number" id="amount" name="amount" required>
+
+        <label for="source_currency">Devise source :</label>
+        <input type="text" id="source_currency" name="source_currency" required placeholder="Ex : USD">
+
+        <label for="target_currency">Devise cible :</label>
+        <input type="text" id="target_currency" name="target_currency" required placeholder="Ex : EUR">
+
+        <button type="submit">Convertir</button>
+    </form>
+
+    <h2 id="result"></h2>
+
+    <script>
+        document.getElementById('converterForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const amount = parseFloat(document.getElementById('amount').value);
+            const sourceCurrency = document.getElementById('source_currency').value.toUpperCase();
+            const targetCurrency = document.getElementById('target_currency').value.toUpperCase();
+
+            // URL de l'API de conversion de devises gratuite
+            const apiKey = '030a98ab2fe11ec04db57668';
+            const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${sourceCurrency}/${targetCurrency}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.result === "success") {
+                    const convertedAmount = amount * data.conversion_rate;
+                    document.getElementById('result').innerText = `Montant converti : ${convertedAmount} ${targetCurrency}`;
+                } else {
+                    document.getElementById('result').innerText = 'Erreur lors de la conversion. Vérifiez les devises.';
+                }
+            } catch (error) {
+                document.getElementById('result').innerText = 'Erreur lors de la récupération des données.';
+                console.error('Erreur:', error);
+            }
+        });
+    </script>
+</body>
+</html>
