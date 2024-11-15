@@ -41,7 +41,7 @@ def convert():
     if not all([amount, source_currency, target_currency]):
         return jsonify({"error": "Amount, source currency, and target currency are required"}), 400
 
-    result = convert_currency(amount, source_currency, target_currency)
+    result = round(convert_currency(amount, source_currency, target_currency), 2)
 
     if result is None:
         return jsonify({"error": "Conversion failed. Check the currencies and try again."}), 400
