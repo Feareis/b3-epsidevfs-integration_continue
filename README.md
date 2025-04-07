@@ -1,5 +1,5 @@
 <h3 align="center">
-        <samp>&gt; Integration Continue
+        <samp>&gt; Continued integration
         </samp>
 </h3>
 
@@ -26,13 +26,13 @@
 
 <br/>
 
-# - Objectifs - </center>
+# - Objectives - </center>
 
-## Mettre en place un pipeline d'intégration continue pour un projet logiciel
+## Set up a continuous integration pipeline for a software project
 
 <br/>
 
-# - Architecture du projet -
+# - Project architecture -
 
 ```php
 ├── venv/
@@ -47,54 +47,54 @@
 
 <br/>
 
-# - Concepts Clés -
+# - Key concepts -
 
-## - Pourquoi Docker ?
+## - Why choose Docker ?
 
-+ Isolation : Chaque application s'exécute dans son propre environnement, sans interférer avec d'autres applications.
-+ Portabilité : Un conteneur peut fonctionner de manière identique sur différentes machines, garantissant un comportement constant.
-+ Facilité de déploiement : Docker facilite l'intégration et le déploiement d'applications grâce aux images Docker.
-
-
-## - Pourquoi Jenkins ?
-
-+ Automatisation : Jenkins automatise les étapes de build, test et déploiement, réduisant ainsi le risque d’erreurs humaines.
-+ Intégration continue (CI) : Jenkins permet de détecter les erreurs rapidement en exécutant des tests sur chaque modification du code.
-+ Déploiement continu (CD) : Jenkins peut automatiser le déploiement de nouvelles versions d'applications.
++ Isolation: Each application runs in its own environment, without interfering with other applications.
++ Portability: A container can run identically on different machines, guaranteeing consistent behavior.
++ Ease of deployment: Docker makes it easy to integrate and deploy applications, thanks to Docker images.
 
 
-## - Pourquoi un pipeline CI/CD ?
+## Why Jenkins?
 
-+ Efficacité : En automatisant les processus de construction, de test et de déploiement, les développeurs peuvent livrer des fonctionnalités plus rapidement.
-+ Qualité du code : Les tests automatisés détectent les erreurs rapidement, améliorant la stabilité du code.
-+ Feedback rapide : Les développeurs reçoivent des retours immédiats sur l’intégrité de leur code à chaque changement, ce qui permet une correction rapide des problèmes.
++ Automation: Jenkins automates the build, test and deployment stages, reducing the risk of human error.
++ Continuous Integration (CI): Jenkins enables rapid error detection by running tests on every code change.
++ Continuous Deployment (CD): Jenkins can automate the deployment of new versions of applications.
+
+
+## - Why a CI/CD pipeline?
+
++ Efficiency: By automating the build, test and deployment processes, developers can deliver features faster.
++ Code quality: Automated testing detects errors quickly, improving code stability.
++ Rapid feedback: Developers receive immediate feedback on the integrity of their code with every change, enabling rapid correction of problems.
 
 <br/>
 
 # - Installation -
 
-## 1. Prérequis : Installer Docker et Git
+## 1. Prerequisites: Install Docker and Git
 
-## 2. Cloner le Projet depuis GitHub
+## 2. Clone Project from GitHub
 ```
 git clone https://github.com/Feareis/b3-epsidevfs-integration_continue.git
 cd b3-epsidevfs-integration_continue
 ```
 
-## 3. Construire l’Image Docker
+## 3. Building the Docker Image
 ```
 docker build -t currency_converter:1.0 .
 ```
 
-## 4. Exécuter l’Application Dockerisée
+## 4. run the docked application
 ```
 docker run -p 5000:5000 currency_converter:1.0
 ```
 
-## 5. Configurer Jenkins (si nécessaire)
+## 5. Configure Jenkins (if necessary)
 
-Installer Jenkins : Installe Jenkins (par exemple, avec Docker).
+Install Jenkins: Install Jenkins (with Docker, for example).
 <br/><br/>
-Configurer le pipeline : 
-+ Crée un nouveau job Jenkins et relie-le au dépôt GitHub b3-epsidevfs-integration_continue.
-+ Si un Jenkinsfile est déjà présent dans le dépôt, Jenkins exécutera automatiquement le pipeline (build, tests, déploiement).
+Configuring the pipeline : 
++ Create a new Jenkins job and link it to the GitHub repository b3-epsidevfs-integration_continue.
++ If a Jenkinsfile is already present in the repository, Jenkins will automatically execute the pipeline (build, test, deploy).
